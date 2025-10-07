@@ -19,7 +19,7 @@ jobs:
         run: |
           cd frontend && npm install && npm run build
           cd ../backend && npm install && node -c server.js
-          echo "✅ Tests OK"
+          echo "Le test est passé avec succès !"
 
   deploy:
     needs: test
