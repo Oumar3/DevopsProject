@@ -19,14 +19,4 @@ jobs:
         run: |
           cd frontend && npm install && npm run build
           cd ../backend && npm install && node -c server.js
-          echo "Tests OK"
-
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Deploy
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: cd.yml
-          token: ${{ secrets.GITHUB_TOKEN }}
+          echo "✅ Tests OK"
