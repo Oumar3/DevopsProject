@@ -1,4 +1,4 @@
-name: ✅ Test
+name: continuous-integration
 
 env:
   NODE_version: '20'

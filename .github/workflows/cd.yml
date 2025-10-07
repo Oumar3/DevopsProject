@@ -4,11 +4,9 @@ name: Déploiement vers VPS
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Test"]
+    workflows: ["continuous-integration"]
     types:
       - completed
-
-
 
 jobs:
   deploy:
