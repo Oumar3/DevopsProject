@@ -1,0 +1,29 @@
+# Configuration Docker Compose pour le développement frontend
+version: '3.8'
+
+services:
+  frontend:
+    # Build avec target développement
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+      target: development
+    # Commande de développement avec Vite
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+    # Variables d'environnement pour le développement
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://localhost:5000/api
+    # Volumes pour le hot-reload
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./index.html:/app/index.html
+      - ./vite.config.js:/app/vite.config.js
+      - /app/node_modules
+    # Port de développement Vite
+    ports:
+      - "5173:5173"
+    # Réseau de développement
+    networks:
+      - app-network

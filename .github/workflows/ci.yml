@@ -1,0 +1,32 @@
+name: ✅ Test
+
+env:
+  NODE_version: '20'
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_version }}
+      - name: Test
+        run: |
+          cd frontend && npm install && npm run build
+          cd ../backend && npm install && node -c server.js
+          echo "Tests OK"
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Deploy
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: cd.yml
+          token: ${{ secrets.GITHUB_TOKEN }}
