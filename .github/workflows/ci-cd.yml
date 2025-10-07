@@ -34,14 +34,14 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            mkdir -p /var/www/devops-project
+            sudo mkdir -p /var/www/devops-project
             cd /var/www/devops-project
 
             # Copier deploy.sh depuis GitHub runner vers VPS
             echo "Copying deploy.sh..."
             
             # Créer le fichier deploy.sh directement
-            cat > deploy.sh << 'EOF'
+            sudo cat > deploy.sh << 'EOF'
             #!/bin/bash
             echo "🚀 Début du déploiement..."
             git pull origin main
@@ -49,4 +49,4 @@ jobs:
             EOF
             
             chmod +x deploy.sh
-            ./deploy.sh
+            sudo ./deploy.sh
