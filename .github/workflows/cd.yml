@@ -1,4 +1,0 @@
-# CD intégré dans CI - Ce fichier n'est plus utilisé
-# Le déploiement se fait maintenant directement dans ci.yml après les tests
-
-name: CD-OBSOLETE
