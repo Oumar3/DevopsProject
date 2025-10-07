@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            mkdir -p /var/www/devops-project
+            sudo mkdir -p /var/www/devops-project
             cd /var/www/devops-project
-            chmod +x deploy.sh
-            ./deploy.sh
+            sudo chmod +x deploy.sh
+            sudo ./deploy.sh
