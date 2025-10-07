@@ -37,16 +37,6 @@ jobs:
             sudo mkdir -p /var/www/devops-project
             cd /var/www/devops-project
 
-            # Copier deploy.sh depuis GitHub runner vers VPS
-            echo "Copying deploy.sh..."
-            
-            # Créer le fichier deploy.sh directement
-            sudo cat > deploy.sh << 'EOF'
-            #!/bin/bash
-            echo "🚀 Début du déploiement..."
             git pull origin main
-            echo "✅ Déploiement terminé!"
-            EOF
-            
-            chmod +x deploy.sh
-            sudo ./deploy.sh
+            echo "Déploiement terminé!"
+            echo "Redémarrage des services Docker deploy.sh apres"
