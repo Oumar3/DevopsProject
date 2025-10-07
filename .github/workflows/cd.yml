@@ -7,8 +7,8 @@ on:
     workflows: ["Test"]
     types:
       - completed
-    branches:
-      - main
+
+
 
 jobs:
   deploy:
@@ -22,6 +22,6 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd /opt/devops-project
+            mkdir -p /var/www/devops-project
             chmod +x deploy.sh
             ./deploy.sh
