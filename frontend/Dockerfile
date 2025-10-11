@@ -9,7 +9,10 @@ COPY package*.json ./
 # Installer toutes les dépendances
 RUN npm install
 
-RUN apt-get install -y curl
+# RUN apt-get install -y curl
+
+# Installer curl sur Alpine
+RUN apk add --no-cache curl
 
 # Copier le code source
 COPY . .
