@@ -3,8 +3,6 @@
 # Script de déploiement simple pour VPS
 echo "Début du déploiement..."
 
-cd /home/ubuntu/DevopsProject
-
 # 1. Mise à jour du code
 echo "Git pull..."
 git pull origin main
