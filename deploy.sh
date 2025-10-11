@@ -33,8 +33,8 @@ echo "Utilisation de: $DOCKER_COMPOSE_CMD"
 echo "Arrêt des conteneurs..."
 $DOCKER_COMPOSE_CMD -f docker-compose-prod.yml down
 
-# 6. Suppression du volume frontend pour forcer la mise à jour
-echo "Suppression du volume frontend pour mise à jour..."
+#6 supprime le volume de frontend qui contient les fichiers buildés
+echo "Suppression du volume frontend contenant les fichiers buildés..."
 docker volume rm devopsproject_frontend-dist 2>/dev/null || echo "Volume frontend-dist déjà supprimé ou inexistant"
 
 # 7. Démarrage des nouveaux conteneurs
