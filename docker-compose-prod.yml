@@ -75,7 +75,7 @@ services:
 
   backend:
     #Extensions communes
-    <<: [*common-config, *resources-medium, *default-logging]
+    <<: [*common-config, *default-logging]
     
     #Configuration de construction
     image: ${DOCKER_USERNAME}/backend:latest
@@ -113,7 +113,7 @@ services:
 
   mongo:
     #Extensions communes
-    <<: [*common-config, *resources-lourde, *default-logging]
+    <<: [*common-config,*default-logging]
     
     #Image Docker officielle
     image: mongo:latest
@@ -141,7 +141,7 @@ services:
 
   nginx:
     # Extensions communes
-    <<: [*common-config, *resources-leger, *default-logging]
+    <<: [*common-config,*default-logging]
     
     #Image officielle
     image: nginx:alpine
