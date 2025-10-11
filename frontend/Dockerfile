@@ -19,3 +19,6 @@ COPY . .
 
 # Build de l'application
 RUN npm run build
+
+# Garder le conteneur en vie pour que le volume soit accessible
+CMD ["tail", "-f", "/dev/null"]

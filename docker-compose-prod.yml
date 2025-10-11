@@ -65,11 +65,6 @@ services:
     #Réseau (hérité de common-config)
     networks:
       - app-network
-    #Command pour copier les fichiers au démarrage puis garder le conteneur vivant
-    command: >
-      sh -c "cp -r /app/dist/* /app/dist/ 2>/dev/null || true && 
-             echo 'Frontend files updated in volume' && 
-             tail -f /dev/null"
     #Healthcheck simple
     healthcheck:
       test: ["CMD", "test", "-f", "/app/dist/index.html"]
