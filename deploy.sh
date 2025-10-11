@@ -5,25 +5,31 @@ echo "Début du déploiement..."
 
 # 1. Mise à jour du code
 echo "Git pull..."
+git stash
 git pull origin main
 
-# 2. Arrêt des anciens conteneurs
+# 2. Configuration des variables d'environnement
+echo "Configuration des variables..."
+echo "DOCKER_USERNAME=oumar1" > .env
+
+# 3. Pull des nouvelles images
+echo "Pull des nouvelles images..."
+docker pull oumar1/frontend:latest
+docker pull oumar1/backend:latest
+
+# 4. Arrêt des anciens conteneurs
 echo "Arrêt des conteneurs..."
 docker compose -f docker-compose-prod.yml down
 
-# # 3. Construction des nouvelles images
-# echo "Construction des images..."
-# docker-compose -f docker-compose-prod.yml build --no-cache
-
-# 4. Démarrage des nouveaux conteneurs
+# 5. Démarrage des nouveaux conteneurs
 echo "Démarrage des conteneurs..."
 docker compose -f docker-compose-prod.yml up -d
 
-# 5. Vérification
+# 6. Vérification
 echo "Vérification des conteneurs..."
 docker compose -f docker-compose-prod.yml ps
 
-# 6. Nettoyage
+# 7. Nettoyage
 echo "Nettoyage des images non utilisées..."
 docker image prune -f
 
