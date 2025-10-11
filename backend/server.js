@@ -3,7 +3,6 @@ import connectDB from './src/config/db.conf.js';
 import app from './index.js';
 dotenv.config();
 
-
 // Connexion à MongoDB puis démarrage du serveur
 const startServer = async () => {
   try {

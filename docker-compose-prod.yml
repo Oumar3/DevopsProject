@@ -49,13 +49,11 @@ x-common-config: &common-config
 services:
   frontend:
     #Configuration de construction
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: ${DOCKER_USERNAME}/frontend:latest
     #Nom du conteneur
     container_name: frontend
     #Politique de redémarrage
-    restart: "no"
+    restart: unless-stopped
     #Pas de dépendances
     #Variables d'environnement via .env
     env_file:
@@ -67,8 +65,13 @@ services:
     #Réseau (hérité de common-config)
     #Pas de labels spécifiques
     #Pas de healthcheck (service temporaire)
-    #Commande pour build et exit
-    command: ["sh", "-c", "npm run build && echo 'Build terminé' && exit 0"]
+    #Healthcheck simple
+    healthcheck:
+      test: ["CMD", "test", "-f", "/app/dist/index.html"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
 
   backend:
     #Extensions communes
@@ -76,10 +79,9 @@ services:
     
     #Configuration de construction
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      image: ${DOCKER_USERNAME}/backend:latest
     #Nom du conteneur
-    container_name: backend-prod
+    container_name: backend
     #Dépendances de service
     depends_on:
       mongo:
@@ -89,7 +91,7 @@ services:
       - ./backend/.env
     #Mappage des ports
     ports:
-      - "5000:5000"
+      - "5000"
     #Volumes de production
     volumes:
       - backend-logs:/app/logs
@@ -108,7 +110,7 @@ services:
       retries: 5
 
     #Commande de lancement
-    command: ["pm2-runtime", "start", "ecosystem.config.json", "--env", "production", "--no-daemon"]
+    command: ["pm2-runtime", "start", "ecosystem.config.json"]
 
   mongo:
     #Extensions communes
