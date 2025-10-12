@@ -5,17 +5,20 @@ echo "Début du déploiement..."
 
 # 1. Mise à jour du code
 echo "Git pull..."
-git stash push -m "Auto-stash avant déploiement $(date)"
+git stash 
+
 git pull origin main
+
+git stash apply
 
 # 2. Configuration des variables d'environnement
 echo "Configuration des variables..."
-echo "DOCKER_USERNAME=oumar1" > .env
+DOCKER_USERNAME="oumar1"
 
 # 3. Pull des nouvelles images
 echo "Pull des nouvelles images..."
-docker pull oumar1/frontend:latest
-docker pull oumar1/backend:latest
+docker pull $DOCKER_USERNAME/frontend:latest
+docker pull $DOCKER_USERNAME/backend:latest
 
 # 4. Détection de la version Docker Compose
 if command -v "docker-compose" > /dev/null 2>&1; then
