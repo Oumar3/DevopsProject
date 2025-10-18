@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  mongo-dev:
+    image: mongo:latest
+    container_name: mongo-dev
+    ports:
+      - "27017:27017"  # Mapping du port pour développement local
+    volumes:
+      - mongo-dev-data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=devops_db
+    restart: unless-stopped
+    networks:
+      - dev-network
+
+volumes:
+  mongo-dev-data:
+    driver: local
+
+networks:
+  dev-network:
+    driver: bridge

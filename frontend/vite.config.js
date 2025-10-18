@@ -7,17 +7,8 @@ export default defineConfig({
   
   // Configuration du serveur de développement
   server: {
-    host: '0.0.0.0', // Permet l'accès depuis Docker
-    port: 3000,      // Port frontend
-    proxy: {
-      // Proxy pour les appels API vers le backend Docker
-      '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path // Garde /api dans le path
-      }
-    }
+    host: '0.0.0.0',
+    port: 3000
   },
   
   // Configuration pour la production

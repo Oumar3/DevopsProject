@@ -1,9 +1,10 @@
 import Article from '../models/Article.js';
 
 const getArticles = async (req, res) => {
+  console.log("hello ");
   try {
     const articles = await Article.find();
-    res.json(articles);
+    res.status(200).json(articles);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
