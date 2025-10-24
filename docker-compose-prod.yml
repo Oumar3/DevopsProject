@@ -62,8 +62,6 @@ services:
     #Volumes pour récupérer les fichiers buildés
     volumes:
     #monter les fichiers buildés
-      - frontend-dist:/app/dist
-    #monter les fichiers buildés depuis l'hôte
       - ./home/ubuntu/frontend-dist:/app/dist
     #Réseau (hérité de common-config)
     networks:
