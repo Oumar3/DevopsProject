@@ -33,7 +33,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Welcome Devops Ing Donal!</h1>
+        <h1>Welcome Devops Ing Oumar!</h1>
         {loading && <p>Loading articles...</p>}
         {error && <p>Error loading articles: {error.message}</p>}
         <div>
