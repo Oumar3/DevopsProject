@@ -56,7 +56,4 @@ docker run --rm -v devopsproject_frontend-dist:/data alpine ls -la /data | head 
 echo "Nettoyage des images non utilisées..."
 docker image prune -f
 
-docker cp frontend:/app/dist/. /home/ubuntu/frontend-dist/
-
-
 echo "Déploiement terminé avec succès!"
