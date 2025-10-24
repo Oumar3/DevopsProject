@@ -61,7 +61,7 @@ services:
     #Pas de ports (service de build)
     #Volumes pour récupérer les fichiers buildés
     volumes:
-      - frontend-dist:/app/dist
+      - ./home/ubuntu/frontend-dist:/app/dist
     #Réseau (hérité de common-config)
     networks:
       - app-network
