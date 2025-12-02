@@ -12,7 +12,7 @@ connectDB();
 // Configuration CORS - Seulement nécessaire pour le développement local
 if (process.env.NODE_ENV !== 'production') {
     app.use(cors({
-        origin: ['http://localhost:3000', 'http://127.0.0.1:3000',"https://www.oumar.dev","https://oumar.dev"],
+        origin: ['http://localhost:3000', 'http://127.0.0.1:3000',"https://www.oumar.dev","https://oumar.dev","https://test.inseed.td"],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         allowedHeaders: ['Content-Type', 'Authorization'],
         credentials: true
